@@ -1,0 +1,134 @@
+:root {
+  /*Colours*/
+  --clrblack: #1e272e;
+  --clrblack2: #2f3640;
+  --clrblack3: #353b48;
+  --clrred: #c23616;
+  --clrred2: #e84118;
+  --clrorange: #f39c12;
+  --clryellow: #f1c40f;
+  --clrpurple: #8e44ad;
+  --clrpurple2: #9b59b6;
+  --clrblue: #0097e6;
+  --clrblue2: #00a8ff;
+  --clrblue2: #00a8ff;
+  --clrgreen: #44bd32;
+  --clrgreen2: #4cd137;
+  --clrwhite: #f5f6fa;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dark {
+  background-color: #1e272e;
+  color: #f5f6fa;
+}
+
+.light {
+  background-color: #f5f6fa;
+  color: #1e272e;
+}
+
+.change-theme__button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  background: none;
+  border: 2px solid cyan;
+  padding: 15px 30px;
+  font-weight: 700;
+  border-radius: 10px;
+  color: inherit;
+  transition: 0.1s;
+
+  &:hover {
+    transform: translate(-10px, -10px);
+    box-shadow: 10px 10px 0 0 black;
+    background-color: hotpink;
+    border-color: hotpink;
+  }
+
+  &:active {
+    transform: translate(0, 0);
+    background-color: var(--clrwhite);
+    box-shadow: none;
+    color: var(--clrblack);
+  }
+}
+
+.quotes__container {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.quotes-list {
+  margin-bottom: 5px;
+  border: 2px solid var(--clrblack3);
+  
+  .quotes-list__tab {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 500px;
+    width: 100%;
+  }
+}
+
+.element-name, .element-current {
+  // display: block;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.element-current {
+  transition: background-color 0.1s;
+  padding: 0 4px;
+  border-radius: 4px;
+
+  &.up {
+    animation: upFlash 1.5s;
+  }
+
+  &.down {
+    animation: downFlash 1.5s;
+  }
+}
+
+@keyframes upFlash {
+  0% {
+    background-color: var(--clrgreen);
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes downFlash {
+  0% {
+    background-color: var(--clrred);
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+.errorMessage {
+  font-size: 24px;
+  padding: 5px 10px;
+  background-color: var(--clrred2);
+  color: var(--clrblack);
+  font-weight: 700;
+  border-radius: 5px;
+}

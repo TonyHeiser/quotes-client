@@ -1,0 +1,47 @@
+:root {
+  --clrblack: #1e272e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: var(--clrblack);
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+ul, li {
+  list-style-type: none;
+}
+
+.stocks-prices {
+  padding: 20px;
+  border: 2px solid cyan;
+}
+
+.stocks-prices .stock {
+  margin-top: 20px;
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+.stocks-prices .stock:first-child {
+  margin-top: 0;
+}
+
+li.stock span {
+  font-size: 24px;
+}
+
+li.stock span.value {
+  font-weight: 700;
+}
