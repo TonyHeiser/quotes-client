@@ -9,7 +9,7 @@ type Quotes = {
 function App() {
 
   const [theme, setTheme] = useState("light"); //Switch light or dark mode
-  const [data, setData] = useState<Quotes[]>([]); //We use this in updateData()
+  const [data, setData] = useState<Quotes[]>([]); //We use this in updateData() and put here Quotes
 
   const url = "http://127.0.0.1:8787/";
 
@@ -22,8 +22,16 @@ function App() {
   }, [theme]);
 
   const updateData = () => {
-    
+    fetch(url)
+      .then(response => response.json())
+      .then(newData => setData(newData))
   }
+
+  useEffect(() => {
+    updateData();
+    const interval = setInterval(updateData, 2000);
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <>
