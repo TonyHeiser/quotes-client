@@ -26,8 +26,10 @@ function App() {
     try {
       const response = await fetch(url);
       const newData = await response.json();
-      prevDataRef.current = data;
-      setData(newData);
+      setData(oldValue => {
+        prevDataRef.current = oldValue;
+        return newData
+      });
     } catch (error) {
       console.error("Error fetching data: ", error)
     }
