@@ -40,7 +40,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("PrevData", prevDataRef);
+    console.log("PrevData", prevDataRef.current);
     console.log("newData", data);
   }, [data])
 
