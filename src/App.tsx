@@ -1,5 +1,5 @@
 import './App.scss'
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type Quotes = {
   name: string;
@@ -10,6 +10,7 @@ function App() {
 
   const [theme, setTheme] = useState("light"); //Switch light or dark mode
   const [data, setData] = useState<Quotes[]>([]); //We use this in updateData() and put here Quotes
+  const prevDataRef = useRef<Quotes[]>([]);
 
   const url = "http://127.0.0.1:8787/";
 
@@ -21,17 +22,27 @@ function App() {
     document.body.className = theme;
   }, [theme]);
 
-  const updateData = () => {
-    fetch(url)
-      .then(response => response.json())
-      .then(newData => setData(newData))
+  const updateData = async() => {
+    try {
+      const response = await fetch(url);
+      const newData = await response.json();
+      prevDataRef.current = data;
+      setData(newData);
+    } catch (error) {
+      console.error("Error fetching data: ", error)
+    }
   }
 
   useEffect(() => {
     updateData();
     const interval = setInterval(updateData, 2000);
     return () => clearInterval(interval)
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    console.log("PrevData", prevDataRef);
+    console.log("newData", data);
+  }, [data])
 
   return (
     <>
