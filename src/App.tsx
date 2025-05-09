@@ -12,7 +12,7 @@ function App() {
   const [data, setData] = useState<Quotes[]>([]); //We use this in updateData() and put here Quotes
   const prevDataRef = useRef<Quotes[]>([]);
 
-  const url = "http://127.0.0.1:8787/";
+  const url = "https://f9d3c8cd-quotes.tonyhzer.workers.dev/";
 
   const changeTheme = () => {
     setTheme(prevTheme => prevTheme === "light" ? "dark" : "light");
